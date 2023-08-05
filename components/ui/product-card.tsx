@@ -6,14 +6,24 @@ import React from "react";
 import { Button } from "./button";
 import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "./currency";
+import { useRouter } from "next/navigation";
 
 interface Props {
   product: Product;
 }
 
 export default function ProductCard({ product }: Props) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/product/${product.id}`);
+  };
+
   return (
-    <div className="group cursor-pointer space-y-4 rounded-xl border bg-white p-3">
+    <div
+      className="group cursor-pointer space-y-4 rounded-xl border bg-white p-3"
+      onClick={handleClick}
+    >
       <div className="relative aspect-square rounded-xl bg-gray-300">
         <Image
           src={product.images?.[0]?.url}
