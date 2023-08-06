@@ -6,6 +6,7 @@ import useCart from "@/hooks/use-card";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
+import axios from "axios";
 
 export default function Summary() {
   const searchParams = useSearchParams();
@@ -27,16 +28,14 @@ export default function Summary() {
   }, [searchParams, removeAll]);
 
   const onCheckout = async () => {
-    const body = { productIds: products.map((product) => product.id) };
-    const response = await fetch(
+    const response = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
-        method: "POST",
-        body: JSON.stringify(body),
+        productIds: products.map((product) => product.id),
       }
     );
-    const data = await response.json();
-    window.location = data.url;
+
+    window.location = response.data.url;
   };
 
   return (
