@@ -7,9 +7,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
-import { Button } from "./ui/button";
 import Gallery from "./gallery";
 import Info from "./info";
 
