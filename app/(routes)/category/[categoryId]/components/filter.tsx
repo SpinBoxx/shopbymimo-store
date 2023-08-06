@@ -25,9 +25,6 @@ export default function Filter({ data, name, valueKey }: Props) {
     if (current[valueKey] === id) {
       query[valueKey] = null;
     }
-    console.log(query);
-
-    console.log(window.location.href);
 
     const url = qs.stringifyUrl(
       {
@@ -36,9 +33,8 @@ export default function Filter({ data, name, valueKey }: Props) {
       },
       { skipNull: true }
     );
-    console.log(url);
 
-    router.push(url);
+    router.push(url, { scroll: false });
   };
   return (
     <div className="mb-8">

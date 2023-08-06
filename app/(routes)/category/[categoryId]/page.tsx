@@ -7,6 +7,7 @@ import Billboard from "@/components/billboard";
 import Filter from "./components/filter";
 import NoResult from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
+import MobileFilter from "./components/mobile-filters";
 export const revalidate = 0;
 
 interface Props {
@@ -33,6 +34,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         <div className="px-4 pb-24 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
             {/* todo mobile filter */}
+            <MobileFilter sizes={sizes} colors={colors} />
             <div className="hidden lg:block">
               <Filter name="Sizes" data={sizes} valueKey="sizeId" />
               <Filter name="Colors" data={colors} valueKey="colorId" />
@@ -41,7 +43,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               {products.length === 0 && <NoResult />}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {products.map((product) => (
-                  <ProductCard product={product} />
+                  <ProductCard product={product} key={product.id} />
                 ))}
               </div>
             </div>
