@@ -7,7 +7,7 @@ import Billboard from "@/components/billboard";
 import Filter from "./components/filter";
 import NoResult from "@/components/ui/no-results";
 import ProductCard from "@/components/ui/product-card";
-import MobileFilter from "./components/mobile-filters";
+import { MobileFilter } from "./components/mobile-filters";
 export const revalidate = 0;
 
 interface Props {

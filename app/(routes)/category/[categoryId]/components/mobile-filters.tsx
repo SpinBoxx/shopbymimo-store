@@ -14,11 +14,13 @@ interface Props {
   colors: Color[];
 }
 
-export default function MobileFilter({ colors, sizes }: Props) {
+export function MobileFilter({ colors, sizes }: Props) {
   return (
     <Popover>
       <PopoverTrigger asChild className="lg:hidden">
-        <Button variant="outline">Filter products</Button>
+        <Button variant="outline" aria-controls="">
+          Filter products
+        </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80" align="start">
         <div className="grid gap-4">

@@ -16,7 +16,7 @@ export default function ProductList({ title, products }: Props) {
       {products.length === 0 && <NoResult />}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard product={product} key={product.id} />
         ))}
       </div>
     </div>
