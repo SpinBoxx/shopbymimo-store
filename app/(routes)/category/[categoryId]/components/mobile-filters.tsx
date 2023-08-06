@@ -17,7 +17,7 @@ interface Props {
 export default function MobileFilter({ colors, sizes }: Props) {
   return (
     <Popover>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild className="lg:hidden">
         <Button variant="outline">Filter products</Button>
       </PopoverTrigger>
       <PopoverContent className="w-80" align="start">

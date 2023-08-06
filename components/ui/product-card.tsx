@@ -2,11 +2,12 @@
 
 import { Product } from "@/types/types";
 import Image from "next/image";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Button } from "./button";
 import { Expand, ShoppingCart } from "lucide-react";
 import Currency from "./currency";
 import { useRouter } from "next/navigation";
+import usePreviewModal from "@/hooks/use-preview-moda";
 
 interface Props {
   product: Product;
@@ -17,6 +18,11 @@ export default function ProductCard({ product }: Props) {
 
   const handleClick = () => {
     router.push(`/product/${product.id}`);
+  };
+  const previewModal = usePreviewModal();
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    previewModal.onOpen(product);
   };
 
   return (
@@ -33,7 +39,12 @@ export default function ProductCard({ product }: Props) {
         />
         <div className="absolute bottom-5 w-full px-6 opacity-0 transition group-hover:opacity-100">
           <div className="flex justify-center gap-x-6">
-            <Button variant="outline" className="rounded-full" size="icon">
+            <Button
+              variant="outline"
+              className="rounded-full"
+              size="icon"
+              onClick={onPreview}
+            >
               <Expand className="h-5 w-5" />
             </Button>
             <Button variant="outline" className="rounded-full" size="icon">
