@@ -47,7 +47,11 @@ export default function Summary() {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button className="mt-6 w-full rounded-full" onClick={onCheckout}>
+      <Button
+        disabled={products.length === 0}
+        className="mt-6 w-full rounded-full"
+        onClick={onCheckout}
+      >
         Checkout
       </Button>
     </div>
